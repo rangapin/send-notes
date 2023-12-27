@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->uuid('id');
+            // the user ID is going to be linked to ID of this note
+            // if a user is deleted their notes will also be
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('body');

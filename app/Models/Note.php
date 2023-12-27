@@ -9,4 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     use HasFactory, HasUuids;
+
+// we dont want someone updating their ID
+    protected $guarded = [
+        'id',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
